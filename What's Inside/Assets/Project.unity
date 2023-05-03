@@ -234,12 +234,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 255670370}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 255670370}
+  m_maskType: 0
 --- !u!23 &255670370
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -251,6 +251,7 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -352,6 +353,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1287830454}
   m_Father: {fileID: 0}
@@ -386,6 +388,7 @@ GameObject:
   - component: {fileID: 594178488}
   - component: {fileID: 594178487}
   - component: {fileID: 594178489}
+  - component: {fileID: 594178493}
   - component: {fileID: 594178491}
   - component: {fileID: 594178492}
   m_Layer: 0
@@ -405,6 +408,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.424}
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1462312307}
   m_RootOrder: 5
@@ -420,6 +424,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -482,6 +487,9 @@ MonoBehaviour:
     m_Bits: 4096
   grab1: {fileID: 943467204}
   grab2: {fileID: 684365994}
+  Score: 0
+  goodOrEvil: 1
+  Strike: 0
 --- !u!114 &594178491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,6 +572,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &594178493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594178485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20e5280eb7efe6419d0b4d805afbd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HapticsOnValidPickup: 1
+  HapticsOnValidRemotePickup: 1
+  HapticsOnCollision: 1
+  HapticsOnGrab: 1
+  VibrateFrequency: 0.3
+  VibrateAmplitude: 0.1
+  VibrateDuration: 0.1
+  layer:
+    serializedVersion: 2
+    m_Bits: 2048
+  grab1: {fileID: 943467204}
+  grab2: {fileID: 684365994}
+  Score: 0
+  goodOrEvil: 0
+  Strike: 0
 --- !u!114 &684365994 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1447509484480671943, guid: 2af1d2045149fe743b81bc4d1a6f8406,
@@ -610,6 +645,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.1419, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1287830454}
   m_RootOrder: 0
@@ -748,6 +784,7 @@ GameObject:
   - component: {fileID: 1139986477}
   - component: {fileID: 1139986476}
   - component: {fileID: 1139986478}
+  - component: {fileID: 1139986482}
   - component: {fileID: 1139986480}
   - component: {fileID: 1139986481}
   m_Layer: 0
@@ -767,6 +804,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.424}
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 775905743}
   m_RootOrder: 6
@@ -782,6 +820,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -844,6 +883,9 @@ MonoBehaviour:
     m_Bits: 4096
   grab1: {fileID: 943467204}
   grab2: {fileID: 684365994}
+  Score: 0
+  goodOrEvil: 1
+  Strike: 0
 --- !u!114 &1139986480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,6 +968,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1139986482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139986474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20e5280eb7efe6419d0b4d805afbd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HapticsOnValidPickup: 1
+  HapticsOnValidRemotePickup: 1
+  HapticsOnCollision: 1
+  HapticsOnGrab: 1
+  VibrateFrequency: 0.3
+  VibrateAmplitude: 0.1
+  VibrateDuration: 0.1
+  layer:
+    serializedVersion: 2
+    m_Bits: 2048
+  grab1: {fileID: 943467204}
+  grab2: {fileID: 684365994}
+  Score: 0
+  goodOrEvil: 0
+  Strike: 0
 --- !u!1 &1287830453
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +1024,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.0026732448, y: 0.0033239692, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 777829900}
   m_Father: {fileID: 255670374}
@@ -1286,6 +1356,7 @@ GameObject:
   - component: {fileID: 2068755941}
   - component: {fileID: 2068755940}
   - component: {fileID: 2068755938}
+  - component: {fileID: 2068755942}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1305,6 +1376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98ba066fd33ded4aa6474529973e6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   SelectedHand: 1
   LeftPointerTransform: {fileID: 0}
   RightPointerTransform: {fileID: 0}
@@ -1343,10 +1415,27 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2068755942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068755937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b815b1629920d7f4ba91c184f2ec627d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saberL1: {fileID: 1139986478}
+  saberL2: {fileID: 0}
+  saberR1: {fileID: 594178489}
+  saberR2: {fileID: 0}
 --- !u!1001 &491753375213988764
 PrefabInstance:
   m_ObjectHideFlags: 0

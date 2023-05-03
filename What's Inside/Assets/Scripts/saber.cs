@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using BNG;
 
-public class saber : GrabbableHaptics
+public class Saber : GrabbableHaptics
 {
     public LayerMask layer;
     private Vector3 previousPos;
     public Grabber grab1, grab2;
+    public int Score = 0;
+    public bool goodOrEvil;
+    public int Strike = 0;
+    //public Text scoreBox;
+   // public Text strikeBox;
 
 
     // Start is called before the first frame update
@@ -27,6 +32,15 @@ public class saber : GrabbableHaptics
                 Destroy(hit.transform.gameObject);
                 input.VibrateController(0.3f, 0.4f, 0.2f, grab1.HandSide);
                 input.VibrateController(0.3f, 0.4f, 0.2f, grab2.HandSide);
+                if (goodOrEvil) 
+                {
+                    Score+=100;
+                    //scoreBox.text = "Score: " + Score;
+                } else {
+                    Strike++;
+                    //scoreBox.text = "Strikes: " + Strikes;
+                }
+                
 
             }
         }
