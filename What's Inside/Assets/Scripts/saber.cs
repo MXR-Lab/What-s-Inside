@@ -5,52 +5,36 @@ using BNG;
 
 public class Saber : GrabbableHaptics
 {
-    public LayerMask layer;
-    private Vector3 previousPos;
-    public Grabber grab1, grab2;
-    public int Score = 0;
-    public bool goodOrEvil;
-    public int Strike = 0;
-    //public Text scoreBox;
-   // public Text strikeBox;
+
+    public Grabber grabR, grabL;
+    private Manager manager;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        manager = GameObject.FindObjectOfType<Manager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 1, layer))
+
+    void OnTriggerEnter(Collider collision) {   
+        if (collision.CompareTag("Enemy")) 
         {
-            if((Vector3.Angle(transform.position-previousPos, hit.transform.up)>130)||(Vector3.Angle(transform.position-previousPos, -(hit.transform.right))>130)||(Vector3.Angle(transform.position-previousPos, hit.transform.right)>130)||(Vector3.Angle(transform.position-previousPos, -(hit.transform.up))>130)||(Vector3.Angle(transform.position-previousPos, hit.transform.forward)>130)||(Vector3.Angle(transform.position-previousPos, -(hit.transform.forward))>130))
-            {
-                Destroy(hit.transform.gameObject);
-                input.VibrateController(0.3f, 0.4f, 0.2f, grab1.HandSide);
-                input.VibrateController(0.3f, 0.4f, 0.2f, grab2.HandSide);
-                if (goodOrEvil) 
-                {
-                    Score+=100;
-                    //scoreBox.text = "Score: " + Score;
-                } else {
-                    Strike++;
-                    //scoreBox.text = "Strikes: " + Strikes;
-                }
-                
+            manager.increaseScore(100);
+        }
+        else if(collision.CompareTag("NPC"))
+        {
+            manager.increaseStrike(1);
+        }
 
-            }
+        if (gameObject.CompareTag("RightSaber"))
+        {
+            input.VibrateController(0.3f, 0.4f, 0.2f, grabR.HandSide);
         }
-        previousPos = transform.position;
+        else
+            input.VibrateController(0.3f, 0.4f, 0.2f, grabL.HandSide);
+
+        Destroy(collision.transform.gameObject);
+
     }
-    /*void OnTriggerEnter(Collider collision) {   
-        if (collision.gameObject != null) {
-            if (collision.CompareTag("Enemy")) {
-                Destroy(collision.transform.gameObject);
-            }
-        }
-    }*/
 }
